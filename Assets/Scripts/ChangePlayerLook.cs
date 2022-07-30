@@ -17,32 +17,30 @@ public class ChangePlayerLook : MonoBehaviour
             {
                 xScale += (float) number / 100;
                 zScale += (float) number / 100;
-                collision.gameObject.transform.localScale = new Vector3(xScale, yScale, zScale);
-                Destroy(gameObject);
             }
             else if(gameObject.tag == "Thinner")
             {
                 xScale += (float)number / 100;
-                zScale += (float)number / 100;
-                if(xScale > 0 || zScale > 0)
-                    collision.gameObject.transform.localScale = new Vector3(xScale, yScale, zScale);
-                else
-                {
-                    collision.gameObject.transform.localScale = new Vector3(0.2f, 0.246f, 0.2f);
-                    Debug.Log("Game Over ");
-                }
-
-                Destroy(gameObject);
+                zScale += (float)number / 100;      
             }
             else if (gameObject.tag == "Taller")
             {
+                yScale += (float)number / 100;
 
             }
             else if (gameObject.tag == "Smaller")
             {
-
+                yScale += (float)number / 100;
+            }
+            if (xScale > 0 && zScale > 0 && yScale > 0)
+                collision.gameObject.transform.localScale = new Vector3(xScale, yScale, zScale);
+            else
+            {
+                collision.gameObject.transform.localScale = new Vector3(0.2f, 0.246f, 0.2f);
+                Debug.Log("Game Over ");
             }
 
+            Destroy(gameObject);
         }
     }
 }
