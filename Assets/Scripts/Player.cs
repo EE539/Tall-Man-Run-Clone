@@ -56,7 +56,6 @@ public class Player : MonoBehaviour
             //rb.AddForce(transform.forward * movementSpeed); //Move player
             transform.Rotate(Vector3.up * rotationValue);
             transform.Translate(Vector3.forward * movementSpeed * Time.deltaTime);
-            Debug.Log(transform.rotation.y);
             if (this.transform.rotation.y > 0.90f)
                 transform.rotation = Quaternion.Euler(0, 90f, 0);
             else if (this.transform.rotation.y < -0.90f)
