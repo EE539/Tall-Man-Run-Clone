@@ -61,7 +61,12 @@ public class Player : MonoBehaviour
             else if (this.transform.rotation.y < -0.90f)
                 transform.rotation = Quaternion.Euler(0, -90f, 0);
         }
-        rotationValue = 0f;
+        else
+        {
+            rotationValue = 0f;
+            transform.Rotate(Vector3.up * rotationValue);
+        }
+        
     }
 
 

@@ -65,7 +65,7 @@ public class ChangePlayerLook : MonoBehaviour
         }
     }
 
-    private void OnTriggerEnter(Collider collision)
+    private void OnTriggerExit(Collider collision)
     {
         if(collision.gameObject.tag == "Player")
         {
