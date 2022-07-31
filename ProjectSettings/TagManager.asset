@@ -8,6 +8,7 @@ TagManager:
   - Thinner
   - Taller
   - Smaller
+  - Low Obstacle
   layers:
   - Default
   - TransparentFX
