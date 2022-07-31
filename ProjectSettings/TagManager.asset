@@ -10,6 +10,7 @@ TagManager:
   - Smaller
   - Low Obstacle
   - High Obstacle
+  - Enemy
   layers:
   - Default
   - TransparentFX
