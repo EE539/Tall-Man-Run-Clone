@@ -48,6 +48,8 @@ public class ChangePlayerLook : MonoBehaviour
                 xScale -= 0.01f;
                 yScale -= 0.01f;
                 zScale -= 0.01f;
+                if (xScale < 0.2f && zScale < 0.2f)
+                    willDie = 0;
                 StartCoroutine(ChangeColor(collision.gameObject, originalColor));
                 collision.gameObject.transform.Translate(Vector3.forward * (-1));
             }
@@ -55,7 +57,7 @@ public class ChangePlayerLook : MonoBehaviour
                 collision.gameObject.transform.localScale = new Vector3(xScale, yScale, zScale);
             else
             {
-                collision.gameObject.transform.localScale = new Vector3(0.5f, 0.246f, 0.5f);
+                collision.gameObject.transform.localScale = new Vector3(0.2f, 0.246f, 0.2f);
                 Debug.Log("Game Over ");
             }
             if(destroyObject)
@@ -63,9 +65,26 @@ public class ChangePlayerLook : MonoBehaviour
         }
     }
 
+    private void OnTriggerEnter(Collider collision)
+    {
+        if(collision.gameObject.tag == "Player")
+        {
+            float xScale = collision.gameObject.transform.localScale.x, yScale = collision.gameObject.transform.localScale.y, zScale = collision.gameObject.transform.localScale.z;
+            xScale -= 0.3f;
+            yScale -= 0.3f;
+            zScale -= 0.3f;
+            if (xScale < 0.2f && zScale < 0.2f)
+            {
+                collision.gameObject.transform.localScale = new Vector3(0.2f, 0.246f, 0.2f);
+                Debug.Log("Game Over ");
+            }
+            else
+                collision.gameObject.transform.localScale = new Vector3(xScale, yScale, zScale);
+        }
+    }
+
     IEnumerator ChangeColor(GameObject player, Color color)
     {
-        Debug.Log("entered");
         player.GetComponent<MeshRenderer>().material.color = Color.red;
         yield return new WaitForSeconds(0.1f);
         player.GetComponent<MeshRenderer>().material.color = color;
